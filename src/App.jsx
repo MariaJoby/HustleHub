@@ -10,6 +10,7 @@ import Browsegigs from './component/browsegigs'
 import Postgigs from './component/postgigs'
 import Profile from './component/profile'
 import Dashboard from './component/dashboard'
+import Footer from './component/footer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 function App() {
     return(
@@ -24,6 +25,7 @@ function App() {
   <Route path='/profile' element={<Profile />} />
   <Route path='/dashboard' element={<Dashboard />} />
 </Routes>
+<Footer />
         </Router>
         
     );
