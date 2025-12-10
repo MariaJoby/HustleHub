@@ -8,7 +8,14 @@ export default function FindTalent() {
         <p className="text-gray-300 text-lg mb-8">
           Looking to hire talented students for your project, event, or organization? Post opportunities on HustleHub and connect with motivated campus talent. Get quality work done by students eager to build experience and earn money.
         </p>
-        <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            if (typeof window !== "undefined" && window.navigateApp) window.navigateApp("/post-gig");
+            else window.location.href = "/post-gig";
+          }}
+          className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all"
+        >
           Post an opportunity
         </button>
       </div>
