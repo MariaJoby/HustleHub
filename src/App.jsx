@@ -27,54 +27,35 @@ const LazyProfile = lazy(() =>
   }))
 );
 
-// global navigate helper
-function navigateApp(path = "/") {
-  if (typeof window === "undefined") return;
-  if (window.location.pathname === path) return;
-  history.pushState(null, "", path);
-  window.dispatchEvent(new PopStateEvent("popstate"));
-}
-if (typeof window !== "undefined") window.navigateApp = navigateApp;
-
-const heroImage =
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80";
-
-export default function App() {
-  const [route, setRoute] = useState(typeof window !== "undefined" ? window.location.pathname : "/");
-
-  useEffect(() => {
-    const onPop = () => setRoute(window.location.pathname);
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, []);
-
-  // route mapping
-  if (route === "/post-gig") {
-    return (
-      <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
-        <LazyPostGigs />
-      </Suspense>
-    );
-  }
-  if (route === "/browse-gigs") {
-    return (
-      <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
-        <LazyBrowseGigs />
-      </Suspense>
-    );
-  }
-  if (route === "/my-campus") {
-    return (
-      <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
-        <LazyMyCampus />
-      </Suspense>
-    );
-  }
-  if (route === "/profile" || route === "/my-profile") {
-    return (
-      <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
-        <LazyProfile />
-      </Suspense>
+import './App.css'
+import React from 'react'
+import Navbar from './component/Navbar'
+import Landing1 from './component/landing1'
+import Landing2 from './component/landing2'
+import Campus from './component/campus'
+import Browsegigs from './component/browsegigs'
+import Postgigs from './component/postgigs'
+import Profile from './component/profile'
+import Dashboard from './component/dashboard'
+import Footer from './component/footer'
+import Homepage from './component/Homepage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+function App() {
+    return(
+        <Router>
+<Navbar />
+<Routes>
+  <Route path='/' element={<Homepage />} />
+  <Route path='/landing2' element={<Landing2 />} />
+  <Route path='/campus' element={<Campus />} />
+  <Route path='/browsegigs' element={<Browsegigs />} />
+  <Route path='/postgigs' element={<Postgigs />} />
+  <Route path='/profile' element={<Profile />} />
+  <Route path='/dashboard' element={<Dashboard />} />
+</Routes>
+<Footer />
+        </Router>
+        
     );
   }
 
