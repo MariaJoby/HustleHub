@@ -3,8 +3,7 @@
 import './App.css'
 import React from 'react'
 import Navbar from './component/Navbar'
-import Landing1 from './component/landing1'
-import Landing2 from './component/landing2'
+
 import Campus from './component/campus'
 import Browsegigs from './component/browsegigs'
 import Postgigs from './component/postgigs'
@@ -19,7 +18,7 @@ function App() {
 <Navbar />
 <Routes>
   <Route path='/' element={<Homepage />} />
-  <Route path='/landing2' element={<Landing2 />} />
+
   <Route path='/campus' element={<Campus />} />
   <Route path='/browsegigs' element={<Browsegigs />} />
   <Route path='/postgigs' element={<Postgigs />} />
