@@ -11,13 +11,14 @@ import Postgigs from './component/postgigs'
 import Profile from './component/profile'
 import Dashboard from './component/dashboard'
 import Footer from './component/footer'
+import Homepage from './component/Homepage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 function App() {
     return(
         <Router>
 <Navbar />
 <Routes>
-  <Route path='/' element={<Landing1 />} />
+  <Route path='/' element={<Homepage />} />
   <Route path='/landing2' element={<Landing2 />} />
   <Route path='/campus' element={<Campus />} />
   <Route path='/browsegigs' element={<Browsegigs />} />
